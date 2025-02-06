@@ -11,7 +11,7 @@ st.write("Ar filtru palīdzību var atlasīt konkrētu skolu, gadu un eksāmenu,
 # =============================================================================
 # 1. Load the CSV Data from a Local File
 # =============================================================================
-csv_file = "/Users/girtszageris/Downloads/Web Intelligence.csv"
+csv_file = "https://www.dropbox.com/scl/fi/o7j7q5hlq9i04s9tcvj8q/Web-Intelligence-1.csv?rlkey=e05vhykdwv6zrprmx1i5n4fml&dl=1"
 try:
     df = pd.read_csv(csv_file)
 except Exception as e:
