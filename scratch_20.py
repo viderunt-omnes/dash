@@ -33,13 +33,21 @@ if df.empty:
 # =============================================================================
 st.sidebar.header("Filtri")
 
-# --- School Dropdown ---
+# --- School Dropdown with Placeholder ---
 valid_schools = df["Iestādes nosaukums"].dropna().unique()
 if len(valid_schools) == 0:
     st.error("No school data available for 'Centralizēts eksāmens'.")
     st.stop()
 
-selected_school = st.sidebar.selectbox("Izvēlies skolu:", sorted(valid_schools))
+# Prepend a placeholder to the list of schools.
+schools_options = ["Izvēlies skolu"] + sorted(valid_schools)
+selected_school = st.sidebar.selectbox("Izvēlies skolu:", schools_options)
+
+# If the placeholder is selected, display a landing page message.
+if selected_school == "Izvēlies skolu":
+    st.write("Lūdzu, izvēlies skolu no kreisās puses, lai turpinātu analīzi.")
+    st.stop()
+
 filtered_school = df[df["Iestādes nosaukums"] == selected_school]
 if filtered_school.empty:
     st.error("No data available for the selected school.")
@@ -113,7 +121,7 @@ selected_exam = st.sidebar.selectbox("Izvēlies eksāmenu:", sorted(valid_exams)
 school_info = filtered_school.iloc[0]
 address = school_info["Iestādes juridiskās adrese"]
 
-# Change the header to display the selected school's name.
+# Display the header with the selected school's name.
 st.subheader(f"Izvēlētā skola: {selected_school}")
 st.write("**Adrese:**", address)
 
@@ -151,7 +159,7 @@ if exam_results.empty:
 else:
     # Define bins: 0-5, 5-10, ..., 95-100
     bins = list(range(0, 105, 5))
-    labels = [f"{bins[i]}-{bins[i + 1]}" for i in range(len(bins) - 1)]
+    labels = [f"{bins[i]}-{bins[i+1]}" for i in range(len(bins) - 1)]
 
     # Bin the school results and compute counts and normalized frequencies
     school_bins = pd.cut(exam_results["Procenti"], bins=bins, right=False, include_lowest=True)
