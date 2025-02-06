@@ -45,7 +45,7 @@ selected_school = st.sidebar.selectbox("Izvēlies skolu:", schools_options)
 
 # If the placeholder is selected, display a landing page message.
 if selected_school == "Izvēlies skolu":
-    st.write("Lūdzu, izvēlies skolu no kreisās puses, lai turpinātu analīzi.")
+    st.write("**Lūdzu, izvēlies skolu no kreisās puses, lai turpinātu analīzi.**")
     st.stop()
 
 filtered_school = df[df["Iestādes nosaukums"] == selected_school]
