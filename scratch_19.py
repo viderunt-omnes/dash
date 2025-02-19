@@ -84,7 +84,7 @@ skolu_dati = {
         # Valsts eksāmenu dati – 9. klase
         "valsts_eksameni": {
             "9. klase": {
-                "Matematika": {
+                "Matemātika": {
                     "skola": {"2019": 65, "2020": 65, "2021": 66, "2022": 65, "2023": 66},
                     "valsts_vidējais": {"2019": 65, "2020": 66, "2021": 67, "2022": 66, "2023": 67},
                 },
@@ -98,7 +98,7 @@ skolu_dati = {
                 },
             },
             "12. klase": {
-                "Matematika": {
+                "Matemātika": {
                     "skola": {"2019": 60, "2020": 61, "2021": 60, "2022": 61, "2023": 62},
                     "valsts_vidējais": {"2019": 61, "2020": 62, "2021": 61, "2022": 62, "2023": 63},
                 },
@@ -177,7 +177,7 @@ skolu_dati = {
         # Valsts eksāmenu dati – 9. klase
         "valsts_eksameni": {
             "9. klase": {
-                "Matematika": {
+                "Matemātika": {
                     "skola": {"2019": 80, "2020": 82, "2021": 81, "2022": 83, "2023": 82},
                     "valsts_vidējais": {"2019": 75, "2020": 76, "2021": 75, "2022": 76, "2023": 77},
                 },
@@ -191,7 +191,7 @@ skolu_dati = {
                 },
             },
             "12. klase": {
-                "Matematika": {
+                "Matemātika": {
                     "skola": {"2019": 78, "2020": 79, "2021": 78, "2022": 80, "2023": 79},
                     "valsts_vidējais": {"2019": 73, "2020": 74, "2021": 73, "2022": 74, "2023": 75},
                 },
@@ -269,7 +269,7 @@ skolu_dati = {
         },
         "valsts_eksameni": {
             "9. klase": {
-                "Matematika": {
+                "Matemātika": {
                     "skola": {"2019": 60, "2020": 60, "2021": 59, "2022": 60, "2023": 59},
                     "valsts_vidējais": {"2019": 65, "2020": 66, "2021": 65, "2022": 66, "2023": 67},
                 },
@@ -283,7 +283,7 @@ skolu_dati = {
                 },
             },
             "12. klase": {
-                "Matematika": {
+                "Matemātika": {
                     "skola": {"2019": 58, "2020": 58, "2021": 57, "2022": 58, "2023": 57},
                     "valsts_vidējais": {"2019": 61, "2020": 62, "2021": 61, "2022": 62, "2023": 63},
                 },
@@ -394,7 +394,7 @@ with cilsnes[1]:
     st.header("Skolēnu labbūtība")
     st.warning("No esošajiem VIIS datiem šādu cilni nevarētu izveidot!")
     st.write(
-        "Šajā sadaļā redzēsi apmeklējuma datus, skolēnu apmierinātības vērtējumu, kā arī socio-ekonomisko izglītības priekšrocību sadalījumu (ar procentiem tieši virs stabiņiem).")
+        "Šajā sadaļā redzēsi apmeklējuma datus, skolēnu apmierinātības vērtējumu, kā arī sociālekonomisko stāvokli (ar procentiem tieši virs stabiņiem).")
 
     col1, col2 = st.columns(2)
     with col1:
@@ -436,7 +436,7 @@ with cilsnes[1]:
             .configure_legend(labelFontSize=16, titleFontSize=18, orient='bottom', direction='horizontal')
         st.altair_chart(apmierinata_chart, use_container_width=True)
 
-    st.subheader("Socio-ekonomisko priekšrocību sadalījums")
+    st.subheader("Sociālekonomiskais stāvoklis")
     dati_quartile = []
     for kvartile, vērtība in skola["quartile"]["skola"].items():
         dati_quartile.append({"kvartile": kvartile, "Tips": "Skola", "Vērtība": vērtība})
@@ -453,7 +453,7 @@ with cilsnes[1]:
         tooltip=["kvartile", "Tips", "Vērtība"]
     ).properties(width=300, height=300)
 
-    text = alt.Chart(df_quartile).mark_text(dy=10, fontSize=16, color=text_color).encode(
+    text = alt.Chart(df_quartile).mark_text(dy=10, fontSize=14, color=text_color).encode(
         x=alt.X("kvartile:N"),
         xOffset=alt.X("Tips:N"),
         y=alt.Y("Vērtība:Q", scale=alt.Scale(domain=[0, 100]), axis=None),
